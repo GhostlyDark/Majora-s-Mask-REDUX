@@ -1,7 +1,6 @@
 /inject
 **/roms/*
 **/c/*.o
-armips*
 **/__pycache__/*
 !.gitkeep
 
