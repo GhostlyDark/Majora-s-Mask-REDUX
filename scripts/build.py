@@ -7,9 +7,6 @@ import os
 import re
 from subprocess import check_call as call
 
-#import sys
-#sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), '../..'))
-
 from rom_diff import create_diff
 from ntype import BigStream
 from crc import calculate_crc
@@ -19,7 +16,7 @@ Offsets = collections.namedtuple('Offsets', ('table', 'file_start', 'ram_start',
 # Hardcoded fields per target for added data:
 # (Table Start, File Address, RAM Start, RAM End)
 OOT_OFFSETS=Offsets(0x00007400, 0x03480000, 0x80400000, 0x80420000)
-MM_OFFSETS=Offsets(0x0001A500, 0x03800000, 0x80750000, 0x80780000)
+MM_OFFSETS=Offsets(0x0001A500, 0x03800000, 0x80720000, 0x80780000)
 
 def build_data_symbols(symbols, offsets):
     data_symbols = {}
@@ -120,11 +117,6 @@ def main():
 
     script_dir = os.path.dirname(os.path.realpath(__file__))
     run_dir = os.path.join(script_dir, '..')
-    #os.chdir(run_dir)
-
-    tools_dir = os.path.join(run_dir, 'tools')
-    os.environ['PATH'] = tools_dir + os.pathsep + os.environ['PATH']
-	
     os.chdir(run_dir)
 
     # Target relative path
@@ -166,32 +158,14 @@ def main():
 
     update_crc(os.path.join(relpath, 'roms/patched.z64'))
 
-    # Patch output ROM
-
-    try:
-            os.chdir(run_dir + '/patch')
-            call(['flips', '--ignore-checksum', 'patch.bps', '../roms/patched.z64'])
-    except Exception:
-            pass
-
     # Diff ROMs
-
-    os.chdir(run_dir)
-    
     create_diff(
         os.path.join(relpath, 'roms/base.z64'),
         os.path.join(relpath, 'roms/patched.z64'),
-        os.path.join(relpath, 'data/generated/rom_patch.txt'),
+        os.path.join(relpath, 'data/generated/rom_patch.bin'),
         virtual=args.virtual,
         offset=offsets.table,
     )
-	
-    # Compress ROM
-
-    os.chdir(run_dir + '/Compress')
-
-    call(['Compress', '../roms/patched.z64', '../Output_ROM/Better_Majora_Mask.z64'])
-    os.remove('Archive.bin')
 
 if __name__ == '__main__':
     main()

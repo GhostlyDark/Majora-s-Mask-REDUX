@@ -19,21 +19,21 @@
 ;==================================================================================================
 
 .orga G_GI_TABLE_VROM
-.incbin("../../../MMR.Randomizer/Resources/mods/gi-table")
+.incbin("../bin/gi-table")
 
 .orga G_CHEST_TABLE_VROM
-.incbin("../../../MMR.Randomizer/Resources/mods/chest-table")
+.incbin("../bin/chest-table")
 
 ;==================================================================================================
 ; Include Mod Files Converted to Assembly
 ;==================================================================================================
 
-.include "../mods/fix-item-checks.asm"
-.include "../mods/fix-fairies.asm"
-.include "../mods/fix-skulltula-tokens.asm"
-.include "../mods/standing-hearts.asm"
-.include "../mods/replace-gi-table.asm"
-.include "../mods/update-chests.asm"
+;.include "../mods/fix-item-checks.asm"
+;.include "../mods/fix-fairies.asm"
+;.include "../mods/fix-skulltula-tokens.asm"
+;.include "../mods/standing-hearts.asm"
+;.include "../mods/replace-gi-table.asm"
+;.include "../mods/update-chests.asm"
 
 ;==================================================================================================
 ; Set File Indexes for Get-Item & Chest Tables
