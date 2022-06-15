@@ -20,10 +20,10 @@
 ;   sw      s0, 0x0028 (sp)
 ;   or      s0, a0, r0
 ;   sw      ra, 0x002C (sp)
-.org 0x80834604 ; In RDRAM: 0x80751A94
-    sw      ra, 0x002C (sp)
-    jal     before_damage_process_hook
-    sw      s0, 0x0028 (sp)
+;.org 0x80834604 ; In RDRAM: 0x80751A94
+;    sw      ra, 0x002C (sp)
+;    jal     before_damage_process_hook
+;    sw      s0, 0x0028 (sp)
 
 ;==================================================================================================
 ; Override floor physics type hook
@@ -31,5 +31,5 @@
 
 ; Replaces:
 ;   jal     0x800C99D4
-.org 0x80843B10 ; In RDRAM: 0x80760FA0
-    jal     floor_physics_get_override_type
+;.org 0x80843B10 ; In RDRAM: 0x80760FA0
+;    jal     floor_physics_get_override_type

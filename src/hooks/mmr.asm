@@ -19,10 +19,10 @@
 ;==================================================================================================
 
 .orga G_GI_TABLE_VROM
-.incbin("../bin/gi-table")
+;.incbin("../bin/gi-table")
 
 .orga G_CHEST_TABLE_VROM
-.incbin("../bin/chest-table")
+;.incbin("../bin/chest-table")
 
 ;==================================================================================================
 ; Include Mod Files Converted to Assembly

@@ -204,32 +204,32 @@
 ;   lh      t8, 0x0272 (t1)
 ;   andi    t9, t8, 0x00FF
 ;   ori     t6, t9, 0xC800
-.org 0x80116E44 ; In rom: 0xAFCEA4
-    jal     hud_colors_get_magic_meter_color_hook
-    ori     a0, r0, 1
+;.org 0x80116E44 ; In rom: 0xAFCEA4
+;    jal     hud_colors_get_magic_meter_color_hook
+;    ori     a0, r0, 1
     ; Restore RA from previous stack value
-    lw      ra, -0x0004 (sp)
+;    lw      ra, -0x0004 (sp)
 
 ; Custom color for normal magic (original: #00C800)
 ; Replaces:
 ;   lh      t8, 0x0272 (t1)
 ;   andi    t9, t8, 0x00FF
 ;   or      t6, t9, at
-.org 0x80116E74 ; In rom: 0xAFCED4
-    jal     hud_colors_get_magic_meter_color_hook
-    ori     a0, r0, 0
+;.org 0x80116E74 ; In rom: 0xAFCED4
+;    jal     hud_colors_get_magic_meter_color_hook
+;    ori     a0, r0, 0
     ; Restore RA from previous stack value
-    lw      ra, -0x0004 (sp)
+;    lw      ra, -0x0004 (sp)
 
 ; Custom color for infinite magic (charging)
 ; Replaces:
 ;   lh      t7, 0x0272 (t1)
 ;   andi    t8, t7, 0x00FF
 ;   ori     t9, t8, 0xC800
-.org 0x80116D74
-    jal     hud_colors_get_magic_meter_charging_color_hook
-    ori     a0, r0, 1
-    lw      ra, -0x0004 (sp)
+;.org 0x80116D74
+;    jal     hud_colors_get_magic_meter_charging_color_hook
+;    ori     a0, r0, 1
+;    lw      ra, -0x0004 (sp)
 
 ; Custom color for normal magic (charging)
 ; Replaces:
@@ -240,16 +240,16 @@
 ;   lh      t7, 0x0272 (t1)
 ;   andi    t8, t7, 0x00FF
 ;   or      t9, t8, at
-.org 0x80116D90
-.area 0x1C
-    addiu   t6, v0, 0x0008
-    sw      t6, 0x02A0 (v1)
-    sw      t0, 0x0000 (v0)
-    jal     hud_colors_get_magic_meter_charging_color_hook
-    ori     a0, r0, 0
-    lw      ra, -0x0004 (sp)
-    nop
-.endarea
+;.org 0x80116D90
+;.area 0x1C
+;    addiu   t6, v0, 0x0008
+;    sw      t6, 0x02A0 (v1)
+;    sw      t0, 0x0000 (v0)
+;    jal     hud_colors_get_magic_meter_charging_color_hook
+;    ori     a0, r0, 0
+;    lw      ra, -0x0004 (sp)
+;    nop
+;.endarea
 
 ;==================================================================================================
 ; Map color hooks
@@ -267,17 +267,17 @@
 ; Replaces:
 ;   andi    t9, t5, 0x00FF
 ;   or      t7, t9, at
-.org 0x80103E8C ; In rom: 0xAE9EEC
-    jal     hud_colors_get_map_player_cursor_color_hook
-    nop
+;.org 0x80103E8C ; In rom: 0xAE9EEC
+;    jal     hud_colors_get_map_player_cursor_color_hook
+;    nop
 
 ; Custom color for entrance cursor (original: #C80000)
 ; Replaces:
 ;   andi    t4, t3, 0x00FF
 ;   or      t5, t4, at
-.org 0x801063D0 ; In rom: 0xAEC430
-    jal     hud_colors_get_map_entrance_cursor_color_hook
-    nop
+;.org 0x801063D0 ; In rom: 0xAEC430
+;    jal     hud_colors_get_map_entrance_cursor_color_hook
+;    nop
 
 ;==================================================================================================
 ; Song A + C Button Note Colors
